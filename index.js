@@ -13,6 +13,12 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => ({ req, pubsub }),
+  cors: {
+    origin: [
+      "http://localhost:3000",
+      "https://github.com/abhisheksunil2201/social-media-backend",
+    ],
+  },
 });
 
 mongoose
