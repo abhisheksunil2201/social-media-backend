@@ -11,6 +11,14 @@ const pubsub = new PubSub();
 
 const PORT = process.env.PORT || 5000;
 
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+    optionSuccessStatus: 200,
+  })
+);
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -18,7 +26,6 @@ const server = new ApolloServer({
 });
 
 server.applyMiddleware({ app });
-app.use(cors({ origin: "*" }));
 
 mongoose
   .connect(process.env.MONGODB, {
