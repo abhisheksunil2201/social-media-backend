@@ -18,6 +18,7 @@ const server = new ApolloServer({
       "http://localhost:3000",
       "https://peoplemedia.netlify.app/",
     ],
+    credentials: true,
   },
 });
 
