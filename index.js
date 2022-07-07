@@ -13,6 +13,10 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => ({ req, pubsub }),
+  cors:{
+    origin: ["https://peoplemedia.netlify.app/"],
+    credentials: true
+  }
   },
 });
 
