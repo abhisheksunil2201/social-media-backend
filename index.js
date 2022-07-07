@@ -1,6 +1,8 @@
 const { ApolloServer, PubSub } = require("apollo-server");
-const gql = require("graphql-tag");
+const express = require("express");
+const app = express();
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolvers");
@@ -13,12 +15,14 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => ({ req, pubsub }),
-  cors:{
+  cors: {
     origin: ["https://peoplemedia.netlify.app/"],
-    credentials: true
-  }
+    credentials: true,
   },
 });
+
+server.applyMiddleware({ app });
+app.use(cors());
 
 mongoose
   .connect(process.env.MONGODB, {
