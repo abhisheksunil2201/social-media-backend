@@ -15,13 +15,10 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => ({ req, pubsub }),
-  cors: {
-    origin: ["https://peoplemedia.netlify.app/"],
-  },
 });
 
 server.applyMiddleware({ app });
-app.use(cors());
+app.use(cors({ origin: "*" }));
 
 mongoose
   .connect(process.env.MONGODB, {
