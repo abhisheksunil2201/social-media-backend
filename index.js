@@ -13,7 +13,6 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => ({ req, pubsub }),
-  cors: false,
   },
 });
 
