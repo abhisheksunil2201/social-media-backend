@@ -16,7 +16,7 @@ const server = new ApolloServer({
   cors: {
     origin: [
       "http://localhost:3000",
-      "https://github.com/abhisheksunil2201/social-media-backend",
+      "https://peoplemedia.netlify.app/",
     ],
   },
 });
